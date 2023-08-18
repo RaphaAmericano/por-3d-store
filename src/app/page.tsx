@@ -4,7 +4,6 @@ import Image from 'next/image'
 import Canvas from '@/canvas'
 import Customizer from './customizer'
 
-
 import { motion, AnimatePresence } from 'framer-motion'
 import { useSnapshot } from 'valtio'
 import state from '../store'
@@ -38,7 +37,12 @@ export default function Home() {
                 Create your unique and exclusive shit with our brand-new 3D customization tool. 
                 <strong>Unleash your imagination</strong>{" "} and define your own style
               </p>
-              <CustomButton />
+              <CustomButton 
+                type="fill"
+                title="Customize It"
+                handleClick={() => state.intro = false }
+                customStyles="w-fit px-4 py-2.5 font-bold text-sm"
+              />
             </motion.div>
           </motion.div>
         </motion.section> )}
