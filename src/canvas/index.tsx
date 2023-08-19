@@ -1,5 +1,5 @@
 import { Canvas } from "@react-three/fiber"
-import { Environment, Center } from "@react-three/drei"
+import { Environment, Center, useTexture } from "@react-three/drei"
 import CameraRig from "./CameraRig"
 import Backdrop from "./Backdrop"
 import Shirt from "./Shirt"
