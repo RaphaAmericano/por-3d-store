@@ -21,7 +21,27 @@ import CustomButton from "./CustomButton"
 
 export default function Customizer(){
     const snap = useSnapshot(state);
+    const [file, setFile] = useState("")
+    const [prompt, setPrompt] = useState("")
+    const [generatingImg, setGeneratingImg] = useState(false)
+    const [activeEditorTab, setActiveEditorTab] = useState("")
+    const [activeFilterTab, setActiveFilterTab] = useState({
+        logoShirt: true, 
+        stylishShirt: false
+    })
 
+    const generateTabContent = () => {
+        switch(activeEditorTab){
+            case "colorpicker":
+                return <ColorPicker />
+            case "filepicker":
+                return <FilePicker />
+            case "aipicker":
+                return <AIPicker />
+            default: 
+            return null;
+        }
+    }
     return (
         <AnimatePresence>
             {!snap.intro && (
@@ -37,9 +57,10 @@ export default function Customizer(){
                                 <Tab 
                                     key={tab.name}
                                     tab={tab}
-                                    handleClick={() => {}}
+                                    handleClick={() => setActiveEditorTab(tab.name)}
                                 />
                             ))}
+                            {generateTabContent()}
                         </div>
                     </div>
                 </motion.div>
